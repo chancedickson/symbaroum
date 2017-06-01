@@ -1,0 +1,22 @@
+.character-list {
+  flex-direction: column;
+  .block-list-item {
+    padding: 2rem;
+    &:not(:nth-last-child(-n+2)) {
+      border-bottom: 1px $light solid;
+    }
+    &:hover {
+      cursor: pointer;
+      background: $very-light;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .block-list-new:not(:first-child) {
+    margin-top: 2rem;
+  }
+  h2.no-name {
+    font-style: italic;
+  }
+}

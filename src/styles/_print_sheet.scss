@@ -1,0 +1,360 @@
+.print {
+  .label {
+    font-size: 0.5rem;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  .text {
+    font-size: 0.75rem;
+  }
+  .page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+.print .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.print .labeled {
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .label, .text {
+    margin: 0;
+  }
+  &.underlined {
+    border-bottom: 1px solid black;
+  }
+}
+
+.print .header-container {
+  background: $very-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  .header {
+    display: flex;
+    flex-direction: column;
+    .notice {
+      margin-top: 0;
+    }
+  }
+  .print-controls .field {
+    margin-bottom: 0rem;
+    input {
+      flex: 0 0 auto;
+      &[type='radio'] {
+        margin-right: 1rem;
+      }
+    }
+  }
+  .page-size {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+  button, a.button {
+    margin-top: 1rem;
+  }
+  .print {
+    @include button($dark-green);
+  }
+  .leave {
+    @include button($blue);
+  }
+}
+
+.print .info {
+  display: flex;
+  height: 15%;
+  .left-block, .center-block, .right-block {
+    width: 33.333%;
+    height: 100%;
+  }
+  .left-block > * {
+    height: 25%;
+  }
+  .center-block {
+    display: flex;
+    flex-wrap: wrap;
+    .block {
+      width: 33.333%;
+      height: 50%;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      flex-wrap: wrap;
+      p {
+        margin: 0;
+        width: 100%;
+        &.label {
+          padding: 0.25rem;
+          padding-bottom: 0.5rem;
+          height: 45%;
+        }
+        &.text {
+          font-size: 1rem;
+        }
+      }
+      &:first-child, &:nth-child(4) {
+        border-left: 1px solid black;
+      }
+    }
+  }
+  .right-block {
+    > * {
+      height: 25%;
+    }
+    > .shadow {
+      height: 50%;
+    }
+  }
+  .right-block .xp {
+    display: flex;
+    > * {
+      width: 50%;
+    }
+  }
+}
+
+.print .attributes {
+  height: 7.5%;
+  display: flex;
+  justify-content: space-around;
+  .attribute {
+    border: 1px solid black;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 8%;
+    .value, .label {
+      margin: 0;
+    }
+    .label {
+      font-weight: 500;
+      padding-bottom: 0.25rem;
+    }
+  }
+}
+
+.print .abilities-container {
+  height: 60%;
+  h2 {
+    height: 3%;
+  }
+}
+
+.print .abilities {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 97%;
+  .ability {
+    width: 33.333%;
+    height: 25%;
+    padding: 0.25rem;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    &:nth-child(3), &:nth-child(6), &:nth-child(9), &:nth-child(12) {
+      border-right: 1px solid black;
+    }
+    &:nth-child(10), &:nth-child(11), &:nth-child(12) {
+      border-bottom: 1px solid black;
+    }
+    .text {
+      font-size: 0.6rem;
+    }
+    .name {
+      height: 20%;
+    }
+    .effect {
+      height: 60%;
+      justify-content: flex-start;
+    }
+    .type-rank {
+      display: flex;
+      height: 20%;
+      > * {
+        flex: 1 1 auto;
+      }
+    }
+  }
+}
+
+.print .equipment-container {
+  height: 17.5%;
+  padding-top: 1rem;
+  h2 {
+    height: 15%;
+  }
+}
+
+.print .equipment {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  .text {
+    font-size: 0.6rem;
+  }
+  .weapons {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    .weapon {
+      height: 25%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      .name {
+        width: 50%;
+      }
+      .damage {
+        width: 15%;
+      }
+      .quality {
+        width: 25%;
+      }
+      .attribute {
+        width: 10%;
+      }
+    }
+  }
+  .armors {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    .armor {
+      height: 100%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid black;
+      &:last-child {
+        border-right: 1px solid black;
+      }
+      .labeled {
+        height: 25%;
+      }
+    }
+  }
+}
+
+.print .lore {
+  height: 94%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .details {
+    height: 13%;
+    width: 100%;
+    display: flex;
+    > * {
+      width: 33.333%;
+    }
+  }
+  > *:not(.details) {
+    height: 29%
+  }
+}
+
+.print .group {
+  height: 94%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  > * {
+    display: flex;
+    height: 14.2857143%;
+  }
+  .member {
+    display: flex;
+    > * {
+      width: 25%;
+    }
+  }
+}
+
+.print .artifact-container, .print .group-container, .print .lore-container {
+  height: 33.333333%;
+  width: 66.666%;
+  padding-top: 1rem;
+  h2 {
+    height: 6%;
+  }
+}
+
+.print .artifacts {
+  height: 94%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .artifact {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    > * {
+      width: 33.333%;
+    }
+  }
+}
+
+.print .inventory-container {
+  height: 100%;
+  max-height: 100%;
+  width: 33.333%;
+  padding-top: 1rem;
+  h2 {
+    height: 3%;
+  }
+}
+
+.print .inventory {
+  height: 97%;
+  width: 100%;
+  border-left: 1px solid black;
+  > * {
+    height: 7.1428571%;
+  }
+  .item .labeled {
+    height: 50%;
+  }
+}
+
+.page.a4 {
+  width: 210mm;
+  height: 297mm;
+}
+
+.page.letter {
+  width: 8.5in;
+  height: 11in;
+}
+
+@media print {
+  html {
+    font-size: 12pt;
+  }
+
+  .print .header-container {
+    display: none;
+  }
+}
