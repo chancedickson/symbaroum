@@ -34,6 +34,6 @@ a.button, button {
 }
 
 a.button:disabled, button:disabled {
-  @include button($light);
+  @include button($light !important);
   pointer-events: none;
 }
