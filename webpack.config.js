@@ -9,6 +9,7 @@ const extractSass = new ExtractTextPlugin({
 
 const copy = new CopyWebpackPlugin([
   {from: relative("index.html"), to: relative("out")},
+  {from: relative("_redirects"), to: relative("out")},
   {from: relative("node_modules", "font-awesome", "fonts", "*"), to: relative("out", "fonts"), flatten: true}
 ]);
 
