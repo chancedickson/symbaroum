@@ -1,6 +1,6 @@
 {
   "name": "symbaroum",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "dependencies": {
     "autoprefixer": "^7.1.1",
