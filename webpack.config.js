@@ -8,8 +8,8 @@ const extractSass = new ExtractTextPlugin({
 });
 
 const copy = new CopyWebpackPlugin([
-  {from: relative("index.html"), to: relative("out")},
-  {from: relative("_redirects"), to: relative("out")},
+  {from: relative("src", "index.html"), to: relative("out")},
+  {from: relative("src", "_redirects"), to: relative("out")},
   {from: relative("node_modules", "font-awesome", "fonts", "*"), to: relative("out", "fonts"), flatten: true}
 ]);
 
@@ -18,7 +18,7 @@ function relative(...ps) {
 }
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: relative("src", "index.js"),
   output: {
     path: relative("out"),
     filename: "app.js"
