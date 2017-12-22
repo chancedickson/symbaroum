@@ -1,4 +1,4 @@
-export default {
+export const races = {
   abducted: "Human (Abducted)",
   ambrian: "Human (Ambrian)",
   barbarian: "Human (Barbarian)",

@@ -1,3 +1,3 @@
-export { default as abilityRanks } from "./ability_ranks.js";
-export { default as messages } from "./messages.js";
-export { default as races } from "./races.js";
+export * from "./ability_ranks.js";
+export * from "./messages.js";
+export * from "./races.js";

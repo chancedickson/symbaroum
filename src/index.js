@@ -1,9 +1,8 @@
 import "./index.scss";
-import React from "react";
-import ReactDOM from "react-dom";
+import Preact from "preact";
 import {Provider} from "react-redux";
-import Router from "./components/router.js";
-import store from "./store/index.js";
+import {Router} from "./components/router.js";
+import {store} from "./store/index.js";
 
 const component = (
   <Provider store={store}>
@@ -11,4 +10,4 @@ const component = (
   </Provider>
 );
 
-ReactDOM.render(component, document.getElementById("react-root"));
+Preact.render(component, document.body);

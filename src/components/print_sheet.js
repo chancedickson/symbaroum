@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {Map} from "immutable";
@@ -247,7 +247,14 @@ function Inventory({inventory, money, assets}) {
   );
 }
 
-function PrintSheet({character, setPageSize, pageSize, match}) {
+function mapState(state, {match}) {
+  return {
+    character: state.get("characters").get(match.params.id),
+    pageSize: state.get("pageSize", "letter")
+  };
+}
+
+function PrintSheetView({character, setPageSize, pageSize, match}) {
   return (
     <div className="print">
       <div className="header-container">
@@ -278,11 +285,4 @@ function PrintSheet({character, setPageSize, pageSize, match}) {
   );
 }
 
-function mapState(state, {match}) {
-  return {
-    character: state.get("characters").get(match.params.id),
-    pageSize: state.get("pageSize", "letter")
-  };
-}
-
-export default connect(mapState, {setPageSize})(PrintSheet);
+export const PrintSheet = connect(mapState, {setPageSize})(PrintSheetView);

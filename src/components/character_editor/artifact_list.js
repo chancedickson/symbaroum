@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {Map} from "immutable";
 import classNames from "classnames";
 import {SimpleBlockList} from "../block_list.js";
@@ -10,7 +10,7 @@ const defaultArtifact = Map({
   corruption: ""
 });
 
-function Artifact({className, value, onChange}) {
+export function Artifact({className, value, onChange}) {
   return (
     <div className={classNames("artifact", className)}>
       <Input label="Name" value={value.get("name")}
@@ -23,10 +23,8 @@ function Artifact({className, value, onChange}) {
   );
 }
 
-const ArtifactList = SimpleBlockList(Artifact, defaultArtifact, {
+export const ArtifactList = SimpleBlockList(Artifact, defaultArtifact, {
   addLabel: "Add Artifact",
   className: "artifact-list",
   limit: 4
 });
-
-export {ArtifactList, Artifact};

@@ -1,4 +1,4 @@
-export default [
+export const messages = [
   {
     title: "Welcome!",
     message: "Thank you for using my Symbaroum character creator! All data is \

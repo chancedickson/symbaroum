@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {Map, List} from "immutable";
@@ -61,7 +61,13 @@ const CharacterList = BlockList(Character, {
   addLabel: "New Character"
 });
 
-function CharacterSelector({characters, updateCharacters, history}) {
+function mapState(state) {
+  return {
+    characters: state.get("characters")
+  };
+}
+
+export function CharacterSelectorView({characters, updateCharacters, history}) {
   return (
     <CharacterList className="character-list" list={characters}
       onClickItem={(i) => history.push(`/character/${i}`)}
@@ -72,10 +78,4 @@ function CharacterSelector({characters, updateCharacters, history}) {
   );
 }
 
-function mapState(state) {
-  return {
-    characters: state.get("characters")
-  };
-}
-
-export default withRouter(connect(mapState, {updateCharacters})(CharacterSelector));
+export const CharacterSelector = withRouter(connect(mapState, {updateCharacters})(CharacterSelectorView));

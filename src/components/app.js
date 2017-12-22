@@ -1,10 +1,10 @@
-import React from "react";
+import Preact from "preact";
 import {connect} from "react-redux";
 import {Route, Redirect, Switch} from "react-router-dom";
-import CharacterEditor from "./character_editor";
-import CharacterSelector from "./character_selector.js";
-import ActionModal from "./action_modal.js";
-import MessageModal from "./message_modal.js";
+import {CharacterEditor} from "./character_editor";
+import {CharacterSelector} from "./character_selector.js";
+import {ActionModal} from "./action_modal.js";
+import {MessageModal} from "./message_modal.js";
 import {messages} from "../data";
 
 function getModal(unreadMessages, modal) {
@@ -15,7 +15,15 @@ function getModal(unreadMessages, modal) {
   }
 }
 
-function App({modal, unreadMessages}) {
+function mapState(state) {
+  return {
+    modal: state.has("modal"),
+    unreadMessages: state.get("readMessages", 0) < messages.length,
+    printing: state.get("printing", false)
+  };
+}
+
+export function AppView({modal, unreadMessages}) {
   return (
     <div className="app-container">
       <div className="app">
@@ -30,12 +38,4 @@ function App({modal, unreadMessages}) {
   );
 }
 
-function mapState(state) {
-  return {
-    modal: state.has("modal"),
-    unreadMessages: state.get("readMessages", 0) < messages.length,
-    printing: state.get("printing", false)
-  };
-}
-
-export default connect(mapState)(App);
+export const App = connect(mapState)(AppView);

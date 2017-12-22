@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {Map} from "immutable";
 import classNames from "classnames";
 import {SimpleBlockList} from "../block_list.js";
@@ -12,7 +12,7 @@ const defaultAbility = Map({
   effect: ""
 });
 
-function Ability({className, value, onChange}) {
+export function Ability({className, value, onChange}) {
   return (
     <div className={classNames("ability", className)}>
       <Input label="Name" value={value.get("name")}
@@ -28,10 +28,8 @@ function Ability({className, value, onChange}) {
   );
 }
 
-const AbilityList = SimpleBlockList(Ability, defaultAbility, {
+export const AbilityList = SimpleBlockList(Ability, defaultAbility, {
   addLabel: "Add Ability",
   className: "ability-list",
   limit: 12
 });
-
-export {AbilityList, Ability};

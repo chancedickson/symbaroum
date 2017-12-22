@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import classNames from "classnames";
 
 function New({label, onClick}) {
@@ -18,7 +18,7 @@ function Delete({onClick}) {
   );
 }
 
-function SimpleBlockList(Component, defaultElement, opts = {}) {
+export function SimpleBlockList(Component, defaultElement, opts = {}) {
   const SimpleComponent = ({value, className, onChange, deleteItem}) => (
     <div className="simple-block-list-component">
       <Component onChange={onChange} value={value} className={className} />
@@ -42,7 +42,7 @@ function SimpleBlockList(Component, defaultElement, opts = {}) {
   };
 }
 
-function BlockList(Component, opts = {}) {
+export function BlockList(Component, opts = {}) {
   const {limit = Infinity, addLabel = "Add Item", className: optsClassName} = opts;
   return (props) => {
     const {
@@ -64,11 +64,9 @@ function BlockList(Component, opts = {}) {
       </div>);
     return (
       <div className={classNames("block-list", className, optsClassName)}>
-        {elements}
+        {elements.toArray()}
         {list.size < limit && <New label={addLabel} onClick={() => onClickNew()} />}
       </div>
     );
   };
 }
-
-export {SimpleBlockList, BlockList};

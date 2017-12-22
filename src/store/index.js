@@ -1,7 +1,7 @@
 import {Map, List} from "immutable";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
-import LocalStorageBacked from "./local_storage_backed.js";
+import {LocalStorageBacked} from "./local_storage_backed.js";
 import {messages} from "../data/index.js";
 import {
   UPDATE_CHARACTERS,
@@ -38,7 +38,6 @@ function reducer(state = {}, action) {
 }
 
 const localStorage = LocalStorageBacked("state", defaultState, ["characters", "readMessages", "pageSize"]),
-  middleware = applyMiddleware(localStorage.middleware, thunk),
-  store = createStore(reducer, localStorage.initial(), middleware);
+  middleware = applyMiddleware(localStorage.middleware, thunk);
 
-export default store;
+export const store = createStore(reducer, localStorage.initial(), middleware);

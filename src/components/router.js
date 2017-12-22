@@ -1,10 +1,10 @@
-import React from "react";
+import Preact from "preact";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import ScrollToTop from "./scroll_to_top.js";
-import App from "./app.js";
-import PrintSheet from "./print_sheet.js";
+import {ScrollToTop} from "./scroll_to_top.js";
+import {App} from "./app.js";
+import {PrintSheet} from "./print_sheet.js";
 
-function Router() {
+export function Router() {
   return (
     <BrowserRouter>
       <ScrollToTop>
@@ -16,5 +16,3 @@ function Router() {
     </BrowserRouter>
   );
 }
-
-export default Router;

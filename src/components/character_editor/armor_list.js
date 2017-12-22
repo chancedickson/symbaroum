@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {Map} from "immutable";
 import classNames from "classnames";
 import {SimpleBlockList} from "../block_list.js";
@@ -11,7 +11,7 @@ const defaultArmor = Map({
   defense: ""
 });
 
-function Armor({value, onChange, className}) {
+export function Armor({value, onChange, className}) {
   return (
     <div className={classNames("armor", className)}>
       <Input label="Name" value={value.get("name")}
@@ -26,10 +26,8 @@ function Armor({value, onChange, className}) {
   );
 }
 
-const ArmorList = SimpleBlockList(Armor, defaultArmor, {
+export const ArmorList = SimpleBlockList(Armor, defaultArmor, {
   addLabel: "Add Armor",
   className: "armor-list",
   limit: 2
 });
-
-export {ArmorList, Armor};

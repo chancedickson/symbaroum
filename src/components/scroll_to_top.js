@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import Preact, {Component} from "preact";
 import {withRouter} from "react-router-dom";
 
-class ScrollToTop extends Component {
+class ScrollToTopComponent extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0);
@@ -13,4 +13,4 @@ class ScrollToTop extends Component {
   }
 }
 
-export default withRouter(ScrollToTop);
+export const ScrollToTop = withRouter(ScrollToTopComponent);

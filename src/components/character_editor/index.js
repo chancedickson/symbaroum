@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Link, Redirect, withRouter} from "react-router-dom";
@@ -29,7 +29,7 @@ const Inventory = Group("Inventory");
 const Friends = Group("Group");
 const Artifacts = Group("Artifacts and Mystical Treasures");
 
-function CharacterEditor({characters, character, updateCharacter, showModal, match, history}) {
+function CharacterEditorView({characters, character, updateCharacter, showModal, match, history}) {
   if (!character) {
     return <Redirect to="/" />;
   }
@@ -170,4 +170,4 @@ function mapDispatch(dispatch, {match}) {
   }, dispatch);
 }
 
-export default withRouter(connect(mapState, mapDispatch)(CharacterEditor));
+export const CharacterEditor = withRouter(connect(mapState, mapDispatch)(CharacterEditorView));

@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {Map} from "immutable";
 import classNames from "classnames";
 import {SimpleBlockList} from "../block_list.js";
@@ -11,7 +11,7 @@ const defaultWeapon = Map({
   attribute: ""
 });
 
-function Weapon({value, onChange, className}) {
+export function Weapon({value, onChange, className}) {
   return (
     <div className={classNames("armor", className)}>
       <Input label="Name" value={value.get("name")}
@@ -26,10 +26,8 @@ function Weapon({value, onChange, className}) {
   );
 }
 
-const WeaponList = SimpleBlockList(Weapon, defaultWeapon, {
+export const WeaponList = SimpleBlockList(Weapon, defaultWeapon, {
   addLabel: "Add Weapon",
   className: "weapon-list",
   limit: 4
 });
-
-export {WeaponList, Weapon};

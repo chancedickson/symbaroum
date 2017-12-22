@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {Map} from "immutable";
 import classNames from "classnames";
 import {SimpleBlockList} from "../block_list.js";
@@ -9,7 +9,7 @@ const defaultItem = Map({
   description: ""
 });
 
-function Item({className, value, onChange}) {
+export function Item({className, value, onChange}) {
   return (
     <div className={classNames("item", className)}>
       <Input label="Name" value={value.get("name")}
@@ -20,9 +20,7 @@ function Item({className, value, onChange}) {
   );
 }
 
-const InventoryList = SimpleBlockList(Item, defaultItem, {
+export const InventoryList = SimpleBlockList(Item, defaultItem, {
   addLabel: "Add Item",
   className: "inventory-list"
 });
-
-export {Item, InventoryList};

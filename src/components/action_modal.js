@@ -1,16 +1,7 @@
-import React from "react";
+import Preact from "preact";
 import {connect} from "react-redux";
-import Modal from "./modal.js";
+import {Modal} from "./modal.js";
 import {hideModal} from "../store/actions.js";
-
-function ActionModal({title, message, action, cb, hideModal}) {
-  return (
-    <Modal title={title} message={message}>
-      <button className="cancel" onClick={() => hideModal()}>Cancel</button>
-      <button className="confirm" onClick={() => hideModal(action, cb)}>Confirm</button>
-    </Modal>
-  );
-}
 
 function mapState(state) {
   const modal = state.get("modal");
@@ -22,4 +13,13 @@ function mapState(state) {
   };
 }
 
-export default connect(mapState, {hideModal})(ActionModal);
+export function ActionModalView({title, message, action, cb, hideModal}) {
+  return (
+    <Modal title={title} message={message}>
+      <button className="cancel" onClick={() => hideModal()}>Cancel</button>
+      <button className="confirm" onClick={() => hideModal(action, cb)}>Confirm</button>
+    </Modal>
+  );
+}
+
+export const ActionModal = connect(mapState, {hideModal})(ActionModalView);

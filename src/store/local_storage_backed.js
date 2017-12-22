@@ -7,7 +7,7 @@ function filter(map, keys) {
   return map;
 }
 
-function LocalStorageBacked(key, defaultState = {}, savedKeys) {
+export function LocalStorageBacked(key, defaultState = {}, savedKeys) {
   return {
     middleware: (store) => (next) => (action) => {
       const ret = next(action),
@@ -28,5 +28,3 @@ function LocalStorageBacked(key, defaultState = {}, savedKeys) {
     }
   };
 }
-
-export default LocalStorageBacked;

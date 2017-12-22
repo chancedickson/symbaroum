@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 
 function getMessage(m, rawHtml) {
   if (rawHtml) {
@@ -7,7 +7,7 @@ function getMessage(m, rawHtml) {
   return <p>{m}</p>;
 }
 
-function Modal({title, message, children, rawHtml = false}) {
+export function Modal({title, message, children, rawHtml = false}) {
   return (
     <div className="modal">
       <div className="modal-inner">
@@ -20,5 +20,3 @@ function Modal({title, message, children, rawHtml = false}) {
     </div>
   );
 }
-
-export default Modal;

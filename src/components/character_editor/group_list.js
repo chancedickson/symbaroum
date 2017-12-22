@@ -1,4 +1,4 @@
-import React from "react";
+import Preact from "preact";
 import {Map} from "immutable";
 import classNames from "classnames";
 import {SimpleBlockList} from "../block_list.js";
@@ -12,7 +12,7 @@ const defaultMember = Map({
   player: ""
 });
 
-function Member({className, value, onChange}) {
+export function Member({className, value, onChange}) {
   return (
     <div className={classNames("item", className)}>
       <Input label="Name" value={value.get("name")}
@@ -28,10 +28,8 @@ function Member({className, value, onChange}) {
   );
 }
 
-const GroupList = SimpleBlockList(Member, defaultMember, {
+export const GroupList = SimpleBlockList(Member, defaultMember, {
   addLabel: "Add Member",
   className: "member-list",
   limit: 6
 });
-
-export {Member, GroupList};
