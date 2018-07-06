@@ -1,6 +1,7 @@
 import path from "path";
 import WebpackDevServer from "webpack-dev-server";
 import gulp from "gulp";
+import sass from "gulp-sass";
 import webpack from "webpack";
 import rimraf from "rimraf";
 
@@ -15,6 +16,10 @@ const paths = {
   },
   html: {
     entry: relative("src", "index.html"),
+  },
+  sass: {
+    entry: relative("src", "index.scss"),
+    watch: relative("src", "**", "*.scss"),
   },
   srcDir: relative("src"),
   outDir: relative("out"),
@@ -83,6 +88,17 @@ gulp.task("assets.html", () =>
 
 gulp.task("assets", gulp.parallel("assets.html"));
 
+gulp.task("sass.watch", () =>
+  gulp.watch(paths.sass.watch, gulp.parallel("sass.build")),
+);
+
+gulp.task("sass.build", () =>
+  gulp
+    .src(paths.sass.entry)
+    .pipe(sass())
+    .pipe(gulp.dest(paths.outDir)),
+);
+
 gulp.task("js.build", (cb) =>
   webpack(webpackConfig).run((err, stats) => {
     const s = stats.toString({ colors: true });
@@ -110,11 +126,14 @@ gulp.task("js.watch", () => {
   );
 });
 
-gulp.task("build", gulp.series("clean", gulp.parallel("js.build", "assets")));
+gulp.task(
+  "build",
+  gulp.series("clean", gulp.parallel("js.build", "sass.build", "assets")),
+);
 
 gulp.task(
   "dev",
-  gulp.series("build", gulp.parallel("js.watch", "assets.watch")),
+  gulp.series("build", gulp.parallel("js.watch", "sass.watch", "assets.watch")),
 );
 
 gulp.task("default", gulp.parallel("build"));
